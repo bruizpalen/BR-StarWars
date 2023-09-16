@@ -1,0 +1,10 @@
+/* Card.module.css */
+.card {
+  flex: 0 0 auto;
+  width: 500px;
+}
+
+.cardBody {
+  max-height: 200px; /* Adjust this value as needed */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+}
