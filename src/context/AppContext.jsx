@@ -1,38 +1,41 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import getDetails from "../services/getDetails";
+import useResource from "../hooks/useResource";
 
 const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const [people, setPeople] = useState([]);
-  const [vehicles, setVehicles] = useState([]);
-  const [planets, setPlanets] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [people, setPeople] = useState([]);
+  const [people, peopleIsLoading] = useResource("people");
+  const [vehicles, vehiclesIsLoading] = useResource("vehicles");
+  const [planets, planetsIsLoading] = useResource("planets");
+  const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    // Fetch data for people, vehicles, and planets
-    Promise.all([
-      getDetails("people"),
-      getDetails("vehicles"),
-      getDetails("planets"),
-    ])
-      .then(([peopleData, vehiclesData, planetsData]) => {
-        setPeople(peopleData);
-        setVehicles(vehiclesData);
-        setPlanets(planetsData);
-      })
-      .catch((error) => console.log("Error fetching data:", error))
-      .finally(() => setLoading(false));
-  }, []);
+  const addToFavorites = ({ name }) => {
+    if (!favorites.includes(name)) {
+      setFavorites([...favorites, name]);
+    }
+  };
+
+  const removeFromFavorites = ({ name }) => {
+    const updatedFavorites = favorites.filter((item) => item !== name);
+    setFavorites(updatedFavorites);
+  };
 
   const store = {
     people,
     vehicles,
     planets,
-    loading,
+    peopleIsLoading,
+    vehiclesIsLoading,
+    planetsIsLoading,
+    favorites,
   };
 
-  const actions = {}; // You can add functions for state management here if needed
+  const actions = {
+    addToFavorites,
+    removeFromFavorites,
+  }; // You can add functions for state management here if needed
 
   return (
     <AppContext.Provider value={{ store, actions }}>

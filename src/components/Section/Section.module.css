@@ -3,3 +3,8 @@
   white-space: nowrap;
   display: flex;
 }
+
+.loaderContainer {
+  height: 20rem;
+  margin-bottom: 10px;
+}
