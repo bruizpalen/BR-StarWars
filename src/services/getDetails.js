@@ -12,7 +12,7 @@ const getDetails = (resource) => {
     })
     .catch((error) => {
       console.error("Error", error);
-      throw error; // Re-throw the error for higher-level handling
+      throw error;
     });
 };
 

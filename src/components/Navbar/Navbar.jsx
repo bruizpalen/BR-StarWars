@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import starWarsLogo from "../../assets/star-wars-logo.png";
 import classes from "./Navbar.module.css";
 import Dropdown from "./components/Dropdown";
-import ThemeButton from "./components/ThemeButton";
+// import ThemeButton from "./components/ThemeButton";
 
 const Navbar = () => {
   return (

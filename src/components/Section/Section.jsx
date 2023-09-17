@@ -4,8 +4,8 @@ import classes from "./Section.module.css";
 
 const Section = ({ resource }) => {
   const { store } = useAppContext();
-  const resourceData = store[resource]; // Use the provided resource prop
-  const isLoading = store[`${resource}IsLoading`]; // Use the corresponding loading state
+  const resourceData = store[resource];
+  const isLoading = store[`${resource}IsLoading`];
 
   if (isLoading) {
     return (
@@ -20,7 +20,6 @@ const Section = ({ resource }) => {
       </div>
     );
   } else {
-    // console.log(store[resource]);
     return (
       <div className="m-5">
         <div className="text-danger">

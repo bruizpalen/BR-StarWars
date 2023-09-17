@@ -3,3 +3,7 @@
   height: 300px;
   object-fit: contain;
 }
+
+.error-page {
+  min-height: 100vh;
+}

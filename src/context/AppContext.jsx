@@ -1,11 +1,9 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import getDetails from "../services/getDetails";
+import { createContext, useContext, useState } from "react";
 import useResource from "../hooks/useResource";
 
 const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  // const [people, setPeople] = useState([]);
   const [people, peopleIsLoading] = useResource("people");
   const [vehicles, vehiclesIsLoading] = useResource("vehicles");
   const [planets, planetsIsLoading] = useResource("planets");
@@ -35,7 +33,7 @@ export const AppContextProvider = ({ children }) => {
   const actions = {
     addToFavorites,
     removeFromFavorites,
-  }; // You can add functions for state management here if needed
+  };
 
   return (
     <AppContext.Provider value={{ store, actions }}>

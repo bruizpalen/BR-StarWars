@@ -10,7 +10,7 @@ const getResourceList = (resource) => {
     .then((res) => res.results)
     .catch((error) => {
       console.error("Error", error);
-      throw error; // Re-throw the error for higher-level handling
+      throw error;
     });
 };
 
